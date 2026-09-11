@@ -1,0 +1,24 @@
+
+# ref 2: https://optinsoft.net/blog/2025/10/08/How-to-download-a-Chrome-extension-without-installing-it/
+
+
+# example links;
+    ## https://chromewebstore.google.com/detail/material-simple-dark-grey/ookepigabmicjpgfnmncjiplegcacdbm
+
+    ## https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfhk
+
+    ## https://chromewebstore.google.com/detail/infinity-new-tab/dbfmnekepjoapopniengjbcpnbljalfg?hl=en-GB
+
+
+    # https://chromewebstore.google.com/detail/infinity-new-tab/dbfmnekepjoapopniengjbcpnbljalfg
+
+# template:
+    # https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=[VERSION]&x=id%3D[EXTENSION_ID]%26installsource%3Dondemand%26uc
+
+# Where:
+
+#     - [EXTENSION_ID] is the extension ID from the Chrome Webstore. This can be retrieved from the Chrome Webstore URL for that extension, which has the form https://chrome.google.com/webstore/detail/[...]/[EXTENSION_ID]
+    
+#     - [VERSION] is the Chromium browser version.
+
+# For example, cjpalhdlnbpafiamejdnhcphjbkeiagm is the extension id of uBlock Origin, and 69.0 is for the 69.0.x.x browser versions.
