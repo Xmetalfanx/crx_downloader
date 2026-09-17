@@ -66,7 +66,7 @@ function validate_user_inputted_url() {
 
     # check to see if its a valid chrome store link
     ## THIS DOES NOT check if the URL "exists" .. just if the FORMAT is correct
-    if [[ "${extension_url}" =~ ^https://chromewebstore\.google\.com/detail/([^/]+)/([a-z]{32})/?$ ]]; then
+    if [[ ! "$extension_url" =~ ^https://chromewebstore\.google\.com/detail/[^/]+/[a-z]{32}/?$ ]]; then
         # function to get information
         get_extension_info "${extension_url}"
     else
