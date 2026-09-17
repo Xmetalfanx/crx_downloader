@@ -28,19 +28,23 @@ function download_extension() {
 # to create the download link
 
 function get_extension_info() {
-    # idea:
-    #latest_version="152.0.7977.82"
-    latest_version="152.0"
+    #latest_browser_version="152.0"
+    latest_browser_version=$(
+    curl -fsSL 'https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/stable/versions' |
+    jq -r '.versions[0].version' |
+    cut -d. -f1
 
+    echo -e "Latest Chromium/Chrome version: ${latest_browser_version}"
+    user_prompt
 
     extension_name=$(echo "${extension_url}" | sed 's/^.*detail\///g;s/\/.*$//' )
     extension_id=$(echo "${extension_url}" | sed 's/^.*\///')
 
 
-    #curl "https://clients2.google.com/service/update2/crx?response=redirect&prod=chromecrx&prodchannel=&prodversion=${latest_version}lang=en-US&acceptformat=crx3,puff&x=id%3D${extension_id}%26installsource%3Dondemand%26uc&authuser=0"
+    #curl "https://clients2.google.com/service/update2/crx?response=redirect&prod=chromecrx&prodchannel=&prodversion=${latest_browser_version}lang=en-US&acceptformat=crx3,puff&x=id%3D${extension_id}%26installsource%3Dondemand%26uc&authuser=0"
 
     # what to wget
-    extension_download_url="https://clients2.google.com/service/update2/crx?response=redirect&prod=chromecrx&prodchannel=&prodversion=${latest_version}lang=en-US&acceptformat=crx3,puff&x=id%3D${extension_id}%26installsource%3Dondemand%26uc&authuser=0"
+    extension_download_url="https://clients2.google.com/service/update2/crx?response=redirect&prod=chromecrx&prodchannel=&prodversion=${latest_browser_version}lang=en-US&acceptformat=crx3,puff&x=id%3D${extension_id}%26installsource%3Dondemand%26uc&authuser=0"
 
 
    # idea: show the info ... in my head this is 100% a debugging type function that can be commented out "in production"
