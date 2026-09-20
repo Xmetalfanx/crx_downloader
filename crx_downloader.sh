@@ -20,7 +20,7 @@ function display_extension_info() {
 function download_extension() {
     echo -e "Downloading ${extension_download_url}"
     sleep 1
-    wget -O "/home/$USER/Downloads/${extension_name}.crx" ${extension_download_url}
+    wget -O "/home/$USER/Downloads/${extension_name}_${extension_version}.crx" ${extension_download_url}
 }
 
 
@@ -39,6 +39,11 @@ function get_extension_info() {
 
     extension_name=$(echo "${extension_url}" | sed 's/^.*detail\///g;s/\/.*$//' )
     extension_id=$(echo "${extension_url}" | sed 's/^.*\///')
+    extension_version=$(curl -fsSL \
+        "https://clients2.google.com/service/update2/crx?response=update&prodversion=9999&x=id%3D${extension_id}%26uc&acceptformat=crx3" |
+        sed -n 's/.*<updatecheck[^>]*version="\([^"]*\)".*/\1/p' | \
+        sed 's/\./_/g'
+    )
 
 
     #curl "https://clients2.google.com/service/update2/crx?response=redirect&prod=chromecrx&prodchannel=&prodversion=${latest_browser_version}lang=en-US&acceptformat=crx3,puff&x=id%3D${extension_id}%26installsource%3Dondemand%26uc&authuser=0"
