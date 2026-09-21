@@ -56,7 +56,7 @@ function get_extension_info() {
     extension_download_url="https://clients2.google.com/service/update2/crx?response=redirect&prod=chromecrx&prodchannel=&prodversion=${latest_browser_version}lang=en-US&acceptformat=crx3,puff&x=id%3D${extension_id}%26installsource%3Dondemand%26uc&authuser=0"
 
 
-   # idea: shows the info 
+   # idea: shows the info
     # ... in my head this is 100% a debugging type function that can be commented out "in production"
    # display_extension_info
 
@@ -100,7 +100,5 @@ function get_extension_url_from_user() {
 
     process_url "${extension_url}"
 }
-
-#get_extension_id "https://chromewebstore.google.com/detail/material-simple-dark-grey/ookepigabmicjpgfnmncjiplegcacdbm"
 
 get_extension_url_from_user
