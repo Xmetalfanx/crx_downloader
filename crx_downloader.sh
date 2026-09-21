@@ -85,8 +85,12 @@ function validate_user_inputted_url() {
     # if the response is a redirect (to the Chrome Store frontpage, then its likely there is not a valid extension at the given address)
     [[ "${extension_url}" == *"301"* ]] && echo "redirect detected" && exit 1 || echo "no redirect detected"
 
+function process_url() {
+    validate_user_inputted_url "${extension_url}"
 
+    get_extension_info "$extension_url"
 
+    download_extension "${extension_download_url}"
 }
 
 function get_extension_url_from_user() {
@@ -94,11 +98,7 @@ function get_extension_url_from_user() {
     echo -e "Enter Google Chrome Store link to the extension you want\n"
     read -rp "extension_url: " extension_url
 
-    # TODO: Validate extension_url variable content
-
-    validate_user_inputted_url "${extension_url}"
-
-    get_extension_info "$extension_url"
+    process_url "${extension_url}"
 }
 
 #get_extension_id "https://chromewebstore.google.com/detail/material-simple-dark-grey/ookepigabmicjpgfnmncjiplegcacdbm"
