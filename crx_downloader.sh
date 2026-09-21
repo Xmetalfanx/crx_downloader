@@ -23,7 +23,7 @@ function display_extension_info() {
 
 # Download the crx to the user's downloads directory
 function download_extension() {
-    echo -e "Downloading ${extension_download_url}"
+    echo -e "\vDownloading ${extension_name} from \n${extension_download_url}"
     sleep 1
     wget -O "/home/$USER/Downloads/${extension_name}_${extension_version}.crx" ${extension_download_url}
 }
